@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fff4d6"/><stop offset="1" stop-color="#ecdca9"/></linearGradient><linearGradient id="cheese" x2="1"><stop stop-color="#fff1a8"/><stop offset="1" stop-color="#e5bc59"/></linearGradient></defs>
+  <rect width="240" height="180" rx="18" fill="url(#bg)"/><circle cx="38" cy="43" r="22" fill="#fff" opacity=".34"/><circle cx="202" cy="137" r="28" fill="#fff" opacity=".3"/>
+  <ellipse cx="120" cy="151" rx="60" ry="8" fill="#b28b42" opacity=".23"/><path d="m66 104 91-43 21 16-2 48-84 23-26-16z" fill="url(#cheese)" stroke="#d0a746" stroke-width="2"/><path d="m66 104 87-39 1 51-82 24z" fill="#f9e99c"/><path d="m153 65 25 12-2 48-22-9z" fill="#eac961"/><g fill="#d5aa4a"><circle cx="95" cy="105" r="5"/><circle cx="128" cy="91" r="4"/><circle cx="126" cy="117" r="5"/><circle cx="157" cy="95" r="4"/></g><text x="118" y="139" fill="#806329" font-family="Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">QUESO PANELA</text>
+</svg>

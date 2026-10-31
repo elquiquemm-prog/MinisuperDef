@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f6e8f0"/><stop offset="1" stop-color="#dfcee4"/></linearGradient><linearGradient id="cup" x2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f3edf6"/></linearGradient></defs>
+  <rect width="240" height="180" rx="18" fill="url(#bg)"/><circle cx="39" cy="135" r="25" fill="#fff" opacity=".3"/><circle cx="199" cy="43" r="23" fill="#fff" opacity=".32"/>
+  <ellipse cx="120" cy="151" rx="48" ry="8" fill="#85688b" opacity=".2"/><path d="M84 54h72l-8 83h-56z" fill="url(#cup)" stroke="#c5b5c9" stroke-width="2"/><path d="M81 49h78v14H81z" rx="6" fill="#8f6ba3"/><path d="M97 91c0-12 10-21 23-21s23 9 23 21v27H97z" fill="#f0d7e8"/><circle cx="109" cy="93" r="8" fill="#d995b8"/><circle cx="130" cy="94" r="8" fill="#bd80a5"/><text x="120" y="115" fill="#6e5177" font-family="Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">YOGUR</text><text x="120" y="129" fill="#9b83a2" font-family="Arial,sans-serif" font-size="7" text-anchor="middle">NATURAL · 1 L</text>
+</svg>

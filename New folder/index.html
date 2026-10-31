@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17251f">
+  <meta name="description" content="Minisuper Miranda: productos frescos, buenos precios y atención de confianza.">
+  <meta name="application-name" content="Minisuper Miranda">
+  <link rel="icon" href="assets/miranda.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Minisuper Miranda — Inventario, compras y ventas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><img src="assets/miranda.svg" alt=""></div>
+        <div><div class="brand-name">Miranda</div><div class="brand-caption">MINISUPER · DE CONFIANZA</div></div>
+      </div>
+      <div class="nav-label">Menú principal</div>
+      <nav class="nav-list" aria-label="Secciones">
+        <button class="nav-link active" data-view="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg>Resumen</button>
+        <button class="nav-link" data-view="pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M12 11h5m-2.5-2.5v5"/></svg>Punto de venta<span class="nav-badge">POS</span></button>
+        <button class="nav-link" data-view="inventory"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>Inventario<span class="nav-badge" id="lowStockBadge">0</span></button>
+        <button class="nav-link" data-view="purchases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 8H6"/><path d="M12 9v6m-3-3h6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>Compras</button>
+        <button class="nav-link" data-view="reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h17"/><path d="m7 15 4-4 3 2 6-7"/><path d="M17 6h3v3"/></svg>Reportes</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sync-card"><div class="sync-title"><span class="sync-dot" id="connectionDot"></span><span id="connectionTitle">Solo este navegador</span></div><p id="connectionText">Conecta Supabase para sincronizar tus datos entre dispositivos.</p><button class="sync-configure" id="configureSupabaseButton" type="button">Configurar Supabase</button></div>
+        <div class="profile"><div class="avatar">MM</div><div><div class="profile-name">Equipo Miranda</div><div class="profile-role">Acceso compartido</div></div><button class="logout" id="resetDemo" aria-label="Restablecer datos locales de demostración" title="Restablecer solo datos locales de demostración"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/></svg></button></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <div class="mobile-brand">Miranda <span>&nbsp;/ minisuper</span></div>
+        <div class="crumb">Tienda <span style="padding:0 7px;color:#c5cbc4">/</span> <strong id="breadcrumb">Resumen</strong></div>
+        <div class="top-actions">
+          <div class="date-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span id="todayLabel"></span></div>
+          <button class="icon-button" id="helpButton" aria-label="Información del sistema" title="Información del sistema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.65 1.3c-.9 1.2-2.25 1.2-2.25 3.2M12 17.5h.01"/></svg></button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="view active" id="view-dashboard">
+          <div class="page-heading"><div><div class="eyebrow" id="greetingLine"></div><h1>¡Bienvenido a Minisuper Miranda! <span aria-hidden="true">☀️</span></h1><p class="heading-subtitle">Lo que tu hogar necesita, cerquita de ti.</p></div><button class="button" data-goto="pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nueva venta</button></div>
+          <article class="welcome-card">
+            <div class="welcome-copy">
+              <span class="welcome-kicker"><span></span> MINISUPER MIRANDA · SIEMPRE CERCA</span>
+              <h2>Tu tienda de siempre,<br>con todo lo que buscas.</h2>
+              <p>Productos frescos, básicos de diario<br>y una atención con una sonrisa.</p>
+              <button class="welcome-action" data-goto="pos">Abrir punto de venta <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="welcome-photo" role="img" aria-label="Frutas y verduras frescas de mercado"></div>
+            <div class="welcome-sticker"><strong>Fresco</strong><span>y de aquí</span><span class="sticker-star">✳</span></div>
+          </article>
+          <div class="stats">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Ventas de hoy</span><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg></span></div><div class="stat-value" id="todaySalesValue">$0</div><div class="stat-bottom"><span class="trend">↗</span><span id="todaySalesCount">0 ventas registradas</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Productos activos</span><span class="stat-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></span></div><div class="stat-value" id="productCountValue">0</div><div class="stat-bottom">En tu catálogo de productos</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Por reabastecer</span><span class="stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg></span></div><div class="stat-value" id="lowStockValue">0</div><div class="stat-bottom"><span class="trend down">Atención</span><span>con existencias bajas</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Ticket promedio</span><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20m5-15H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span></div><div class="stat-value" id="averageTicketValue">$0</div><div class="stat-bottom">Promedio por compra de hoy</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel"><div class="panel-heading"><div><h2 class="panel-title">Ritmo de ventas</h2><div class="panel-caption">Un vistazo a tus ingresos recientes</div></div><select class="select" id="chartPeriod" aria-label="Periodo del gráfico"><option value="week">Esta semana</option><option value="month">Este mes</option></select></div><div class="chart-legend"><span class="legend-item"><i class="legend-mark"></i>Ingresos</span><span class="legend-item"><i class="legend-mark soft"></i>Ventas</span></div><div class="chart-wrap"><canvas id="salesChart" aria-label="Gráfico de ingresos recientes" role="img"></canvas><div class="chart-tooltip" id="chartTooltip"></div></div></article>
+            <article class="panel low-stock-panel"><div class="panel-heading"><div><h2 class="panel-title">Stock bajo</h2><div class="panel-caption">Productos que necesitan atención</div></div><button class="text-link" data-goto="inventory">Ver todo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div><div class="stock-list" id="lowStockList"></div><div class="panel-footer"><button class="text-link" data-goto="inventory">Gestionar inventario <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div></article>
+          </div>
+          <article class="panel table-panel"><div class="panel-heading"><div><h2 class="panel-title">Ventas recientes</h2><div class="panel-caption">Las últimas transacciones de tu tienda</div></div><button class="text-link" data-goto="reports">Ver reportes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div><div class="table-scroll"><table><thead><tr><th>VENTA</th><th>HORA</th><th>ATENDIÓ</th><th>ARTÍCULOS</th><th>TOTAL</th><th>ESTADO</th></tr></thead><tbody id="recentSalesBody"></tbody></table></div></article>
+        </section>
+
+        <section class="view" id="view-inventory">
+          <div class="page-heading"><div><div class="eyebrow">Tu tienda, siempre al día</div><h1>Inventario</h1><p class="heading-subtitle">Administra tus productos, precios y existencias.</p></div><button class="button" id="addProductButton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar producto</button></div>
+          <div class="toolbar"><div class="toolbar-group"><div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="inventorySearch" type="search" placeholder="Buscar por nombre o código…" autocomplete="off"></div><select class="select" id="inventoryCategory" aria-label="Filtrar por categoría"><option value="">Todas las categorías</option></select><select class="select" id="stockFilter" aria-label="Filtrar por existencias"><option value="">Todo el stock</option><option value="low">Stock bajo</option><option value="ok">Stock suficiente</option></select></div><span class="count-label" id="inventoryCount"></span></div>
+          <article class="data-table"><div class="table-scroll"><table><thead><tr><th>PRODUCTO</th><th>CÓDIGO</th><th>CATEGORÍA</th><th>PRECIO COMPRA</th><th>PRECIO VENTA</th><th>EXISTENCIAS</th><th>MÍNIMO</th><th style="text-align:right">ACCIONES</th></tr></thead><tbody id="inventoryBody"></tbody></table></div><div class="pagination"><span id="inventorySummary"></span><span>Los cambios se guardan automáticamente</span></div></article>
+        </section>
+
+        <section class="view" id="view-purchases">
+          <div class="page-heading"><div><div class="eyebrow">Abastece tu tienda con orden</div><h1>Compras a proveedores</h1><p class="heading-subtitle">Crea pedidos y registra su recepción para actualizar existencias.</p></div><button class="button secondary" id="addSupplierButton" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar proveedor</button></div>
+          <div class="purchase-layout">
+            <article class="panel purchase-builder">
+              <div class="panel-heading"><div><h2 class="panel-title">Nuevo pedido</h2><div class="panel-caption">El stock cambia hasta que marques el pedido como recibido.</div></div></div>
+              <div class="purchase-fields">
+                <div class="field"><label for="purchaseSupplier">Proveedor *</label><select id="purchaseSupplier" required><option value="">Agrega o selecciona un proveedor</option></select></div>
+                <div class="field"><label for="purchaseProduct">Producto *</label><select id="purchaseProduct" required><option value="">Selecciona un producto</option></select></div>
+                <div class="field"><label for="purchaseQuantity">Cantidad *</label><input id="purchaseQuantity" type="number" min="1" step="1" value="1" inputmode="numeric"></div>
+                <div class="field"><label for="purchaseCost">Costo unitario *</label><input id="purchaseCost" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+                <button class="button secondary purchase-add" id="addPurchaseItem" type="button">Agregar producto</button>
+              </div>
+              <div class="table-scroll purchase-lines"><table><thead><tr><th>PRODUCTO</th><th>CANTIDAD</th><th>COSTO</th><th>IMPORTE</th><th></th></tr></thead><tbody id="purchaseDraftBody"></tbody></table></div>
+              <div class="purchase-summary"><span>Total estimado</span><strong id="purchaseDraftTotal">$0.00</strong></div>
+              <button class="button purchase-submit" id="createPurchaseOrder" type="button" disabled>Guardar pedido</button>
+            </article>
+            <article class="panel supplier-panel"><div class="panel-heading"><div><h2 class="panel-title">Proveedores</h2><div class="panel-caption">Contactos para tus pedidos</div></div><span class="count-label" id="supplierCount"></span></div><div class="supplier-list" id="supplierList"></div></article>
+          </div>
+          <article class="data-table purchase-history"><div class="panel-heading"><div><h2 class="panel-title">Historial de pedidos</h2><div class="panel-caption">Recibe cada pedido una sola vez para sumar existencias.</div></div><span class="count-label" id="purchaseCount"></span></div><div class="table-scroll"><table><thead><tr><th>PEDIDO</th><th>FECHA</th><th>PROVEEDOR</th><th>ARTÍCULOS</th><th>TOTAL</th><th>ESTADO</th><th>ACCIÓN</th></tr></thead><tbody id="purchaseOrdersBody"></tbody></table></div></article>
+        </section>
+
+        <section class="view" id="view-pos">
+          <div class="page-heading"><div><div class="eyebrow">Rápido, fácil y sin complicaciones</div><h1>Punto de venta</h1><p class="heading-subtitle">Busca los productos y agrégalos a la venta.</p></div><div class="date-pill"><span class="sync-dot"></span> Caja abierta</div></div>
+          <div class="pos-layout">
+            <article class="panel pos-products"><div class="panel-heading"><div><h2 class="panel-title">Catálogo</h2><div class="panel-caption">Selecciona un producto para agregarlo</div></div><span class="count-label" id="posProductCount"></span></div><div class="search pos-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="posSearch" type="search" placeholder="Buscar producto o escanear código…" autocomplete="off"><span class="search-shortcut">F2</span></div><div class="category-tabs" id="categoryTabs"></div><div class="product-grid" id="posProductGrid"></div></article>
+            <article class="panel cart-panel"><div class="cart-heading"><div class="cart-heading-title"><h2>Venta actual</h2><span class="cart-number" id="cartCount">0</span></div><button class="cart-clear" id="clearCartButton" type="button" disabled aria-label="Vaciar venta" title="Vaciar venta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6m4 5v5m4-5v5"/></svg>Vaciar</button></div><div class="cart-items" id="cartItems"></div><div class="cart-totals"><div class="total-line"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div><div class="total-line grand"><span>Total a pagar</span><span id="cartTotal">$0.00</span></div><div class="cash-field"><label for="cashReceived">Efectivo recibido <kbd>F4</kbd></label><input id="cashReceived" type="number" min="0" step="0.01" placeholder="0.00" inputmode="decimal"></div><div class="cash-presets" id="cashPresets"><button type="button" data-cash="exact">Exacto</button><button type="button" data-cash="50">$50</button><button type="button" data-cash="100">$100</button><button type="button" data-cash="200">$200</button></div><div class="change-line"><span>Cambio</span><strong id="changeAmount">$0.00</strong></div><button class="button checkout" id="checkoutButton" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Completar venta <kbd>F8</kbd></button><div class="pos-tip">Las ventas descuentan el inventario automáticamente. <span>Escanea un código o busca por nombre.</span></div></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="view-reports">
+          <div class="page-heading"><div><div class="eyebrow">Los números cuentan una historia</div><h1>Reportes de ventas</h1><p class="heading-subtitle">Consulta, filtra e imprime los movimientos de tu tienda.</p></div><button class="button secondary" id="printReport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>Imprimir / Guardar PDF</button></div>
+          <div class="notice"><strong>Reportes calculados desde las ventas.</strong> Al conectar Supabase, estas cifras se sincronizan desde la base en la nube.</div>
+          <div class="toolbar reports-controls"><div class="toolbar-group"><select class="select" id="reportPeriod" aria-label="Periodo del reporte"><option value="today">Hoy</option><option value="week">Últimos 7 días</option><option value="month" selected>Este mes</option><option value="all">Todo el historial</option></select><input class="select" id="reportStartDate" type="date" aria-label="Fecha inicial"><span class="count-label">a</span><input class="select" id="reportEndDate" type="date" aria-label="Fecha final"></div><button class="button secondary" id="exportCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>Descargar CSV</button></div>
+          <div class="reports-cards"><article class="report-card"><span>Ingresos del periodo</span><strong id="reportRevenue">$0.00</strong></article><article class="report-card"><span>Ventas realizadas</span><strong id="reportSaleCount">0</strong></article><article class="report-card"><span>Promedio por venta</span><strong id="reportAverage">$0.00</strong></article></div>
+          <article class="data-table"><div class="table-scroll"><table><thead><tr><th>VENTA</th><th>FECHA Y HORA</th><th>ATENDIÓ</th><th>PRODUCTOS</th><th>UNIDADES</th><th>TOTAL</th><th></th></tr></thead><tbody id="reportsBody"></tbody></table></div><div class="pagination"><span id="reportsSummary"></span><span>Reporte generado desde Minisuper Miranda</span></div></article>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <form class="modal" id="productForm">
+      <div class="modal-head"><div><h2 id="modalTitle">Agregar producto</h2><p>Completa la información del producto.</p></div><button class="close-button" type="button" data-close-modal aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div>
+      <input type="hidden" id="editProductId">
+      <div class="form-grid">
+        <div class="field full"><label for="productName">Nombre del producto *</label><input id="productName" required maxlength="70" placeholder="Ej. Leche entera 1 L"></div>
+        <div class="field"><label for="productCode">Código de barras / SKU *</label><input id="productCode" required maxlength="30" placeholder="Ej. 7501234567890"></div>
+        <div class="field"><label for="productCategory">Categoría *</label><input id="productCategory" required maxlength="35" placeholder="Ej. Lácteos" list="categoryOptions"><datalist id="categoryOptions"></datalist></div>
+        <div class="field full"><div class="image-preview-row"><img id="productPreviewImage" src="assets/pantry.jpg" alt=""><div><strong>Imagen de catálogo</strong><span>La foto se asigna automáticamente según la categoría.</span></div></div></div>
+        <div class="field"><label for="productCost">Precio de compra *</label><input id="productCost" required type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+        <div class="field"><label for="productPrice">Precio de venta *</label><input id="productPrice" required type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+        <div class="field"><label for="productStock">Existencias *</label><input id="productStock" required type="number" min="0" step="1" inputmode="numeric" placeholder="0"></div>
+        <div class="field"><label for="productMinimum">Stock mínimo *</label><input id="productMinimum" required type="number" min="0" step="1" inputmode="numeric" placeholder="5"></div>
+      </div>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close-modal>Cancelar</button><button class="button" type="submit">Guardar producto</button></div>
+    </form>
+  </div>
+  <div class="modal-backdrop" id="supplierModal" role="dialog" aria-modal="true" aria-labelledby="supplierModalTitle">
+    <form class="modal" id="supplierForm">
+      <div class="modal-head"><div><h2 id="supplierModalTitle">Agregar proveedor</h2><p>Guarda sus datos para asociarlos a tus pedidos.</p></div><button class="close-button" type="button" data-close-modal aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div>
+      <input type="hidden" id="editSupplierId">
+      <div class="form-grid">
+        <div class="field full"><label for="supplierName">Nombre del proveedor *</label><input id="supplierName" required maxlength="80" placeholder="Ej. Distribuidora del Centro"></div>
+        <div class="field"><label for="supplierContact">Persona de contacto</label><input id="supplierContact" maxlength="70"></div>
+        <div class="field"><label for="supplierPhone">Teléfono</label><input id="supplierPhone" type="tel" maxlength="30"></div>
+        <div class="field"><label for="supplierEmail">Correo</label><input id="supplierEmail" type="email" maxlength="100"></div>
+        <div class="field"><label for="supplierAddress">Dirección</label><input id="supplierAddress" maxlength="120"></div>
+        <div class="field full"><label for="supplierNotes">Notas</label><input id="supplierNotes" maxlength="180"></div>
+      </div>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close-modal>Cancelar</button><button class="button" type="submit">Guardar proveedor</button></div>
+    </form>
+  </div>
+  <div class="modal-backdrop" id="supabaseModal" role="dialog" aria-modal="true" aria-labelledby="supabaseTitle">
+    <form class="modal" id="supabaseForm">
+      <div class="modal-head"><div><h2 id="supabaseTitle">Conectar Supabase</h2><p>La URL y la clave pública no sustituyen el acceso de tu cuenta.</p></div><button class="close-button" type="button" data-close-modal aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div>
+      <div class="notice">Usa la URL y la clave <strong>anon/publicable</strong> de tu proyecto; nunca pegues la clave <code>service_role</code>. Consulta la guía en README para crear la tabla y la cuenta de acceso.</div>
+      <div class="field"><label for="supabaseUrl">URL del proyecto *</label><input id="supabaseUrl" type="url" required placeholder="https://tu-proyecto.supabase.co" autocomplete="url"></div>
+      <div class="field supabase-fields"><label for="supabaseKey">Clave pública (anon o publishable) *</label><input id="supabaseKey" type="password" required autocomplete="off"></div>
+      <div class="field supabase-fields"><label for="supabaseEmail">Correo de tu cuenta *</label><input id="supabaseEmail" type="email" required autocomplete="username"></div>
+      <div class="field supabase-fields"><label for="supabasePassword">Contraseña *</label><input id="supabasePassword" type="password" required autocomplete="current-password"></div>
+      <div class="field supabase-hint">Se sincroniza una copia del inventario y los registros. Crea usuarios solo para personas autorizadas.</div>
+      <div class="modal-actions"><button class="button secondary" id="supabaseSignOutButton" type="button" hidden>Cerrar sesión</button><button class="button secondary" type="button" data-close-modal>Cancelar</button><button class="button" id="connectSupabaseButton" type="submit">Iniciar sesión y conectar</button></div>
+    </form>
+  </div>
+  <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+    <div class="modal"><div class="modal-head"><div><h2 id="helpTitle">Minisuper Miranda y tus datos</h2><p>Inventario, ventas y compras en un solo flujo.</p></div><button class="close-button" type="button" data-close-modal aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div><div class="notice" style="margin:0">Minisuper Miranda puede guardar datos localmente en este navegador o sincronizarlos con Supabase. En modo local, conserva un respaldo por separado. Para sincronizar, limita los usuarios autorizados en Supabase.</div><div class="shortcut-guide"><strong>Atajos para cobrar más rápido</strong><span><kbd>F2</kbd> Buscar producto <kbd>F4</kbd> Capturar efectivo</span><span><kbd>F8</kbd> Completar venta <kbd>Ctrl</kbd> + <kbd>K</kbd> Abrir caja</span><span>Un lector de código de barras con <kbd>Enter</kbd> agrega el producto.</span></div><div class="modal-actions"><button class="button" type="button" data-close-modal>Entendido</button></div></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-mark">✓</span><span id="toastText"></span></div>
+  <div class="mobile-scrim" id="mobileScrim"></div>
+  
+  <script defer src="js/data.js"></script>
+  <script defer src="js/supabase.js"></script>
+  <script defer src="js/app.js"></script>
+</body>
+</html>

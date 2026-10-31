@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#ffedc5"/><stop offset="1" stop-color="#f5c27b"/></linearGradient><linearGradient id="juice" x2="1"><stop stop-color="#ffc84e"/><stop offset="1" stop-color="#f28a2a"/></linearGradient></defs>
+  <rect width="240" height="180" rx="18" fill="url(#bg)"/><circle cx="38" cy="42" r="21" fill="#fff" opacity=".35"/><circle cx="202" cy="136" r="30" fill="#fff" opacity=".28"/>
+  <ellipse cx="120" cy="153" rx="42" ry="8" fill="#c1742b" opacity=".26"/><path d="M103 35h34v15l12 14v76H91V64l12-14z" fill="#fff7e8" stroke="#e6b778" stroke-width="2"/><path d="M103 35h34v15h-34z" fill="#41865a"/><path d="M96 78h48v52H96z" rx="7" fill="url(#juice)"/><circle cx="120" cy="101" r="16" fill="#ffdb6b"/><circle cx="120" cy="101" r="11" fill="#ffa52e"/><path d="M120 90v22m-11-11h22m-18-8 15 16m0-16-15 16" stroke="#ffedb1" stroke-width="1.5"/><text x="120" y="124" fill="#fffaf0" font-family="Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle">NARANJA · 1 L</text>
+</svg>

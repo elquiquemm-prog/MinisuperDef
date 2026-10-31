@@ -1,0 +1,20 @@
+{
+  "name": "Minisuper Miranda — Inventario y ventas",
+  "short_name": "Miranda",
+  "description": "Punto de venta, inventario y compras de Minisuper Miranda.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#193e2e",
+  "background_color": "#f7f8f5",
+  "icons": [
+    {
+      "src": "assets/miranda.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

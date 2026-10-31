@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e6f4f4"/><stop offset="1" stop-color="#c5e0dc"/></linearGradient><linearGradient id="pack" x2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e8f4f2"/></linearGradient></defs>
+  <rect width="240" height="180" rx="18" fill="url(#bg)"/><circle cx="38" cy="35" r="19" fill="#fff" opacity=".35"/><circle cx="203" cy="139" r="31" fill="#fff" opacity=".32"/>
+  <ellipse cx="120" cy="154" rx="53" ry="9" fill="#80b5b0" opacity=".32"/><path d="M91 48 105 27h31l13 21v93H91z" fill="url(#pack)" stroke="#b6ceca" stroke-width="2"/><path d="m105 27 5 21h39l-13-21z" fill="#d9eae7"/><path d="M113 27h17v11h-17z" rx="3" fill="#316d5a"/>
+  <rect x="98" y="67" width="44" height="33" rx="10" fill="#eaf7f5"/><path d="M111 83c0-7 9-12 9-12s9 5 9 12a9 9 0 0 1-18 0Z" fill="#5da4bb"/><text x="116" y="119" fill="#315d51" font-family="Arial,sans-serif" font-size="10" font-weight="700">LECHE</text><text x="116" y="132" fill="#7c9992" font-family="Arial,sans-serif" font-size="8">ENTERA · 1 L</text>
+</svg>

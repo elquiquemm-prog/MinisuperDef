@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fff3db"/><stop offset="1" stop-color="#ead6ad"/></linearGradient></defs>
+  <rect width="240" height="180" rx="18" fill="url(#bg)"/><circle cx="36" cy="45" r="22" fill="#fff" opacity=".35"/><circle cx="203" cy="132" r="31" fill="#fff" opacity=".3"/>
+  <ellipse cx="120" cy="145" rx="66" ry="10" fill="#a88356" opacity=".2"/><path d="m62 107 12-42a8 8 0 0 1 8-6h76a8 8 0 0 1 8 6l12 42-11 27H73z" fill="#c99359" stroke="#a87543" stroke-width="2"/><path d="M67 105h106l-8 22H75z" fill="#e4bd83"/><g fill="#fffaf0" stroke="#e5d7bb" stroke-width="2"><path d="M87 99c0-11 7-22 14-22s14 11 14 22a14 14 0 1 1-28 0Z"/><path d="M119 99c0-11 7-22 14-22s14 11 14 22a14 14 0 1 1-28 0Z"/></g><text x="120" y="120" fill="#795734" font-family="Arial,sans-serif" font-size="8" font-weight="700" text-anchor="middle">12 HUEVOS</text>
+</svg>
